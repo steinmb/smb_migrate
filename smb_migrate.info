@@ -5,4 +5,4 @@ core = 7.x
 dependencies[] = migrate
 dependencies[] = migrate_d2d
 
-files[] = node.inc
+files[] = smb_migrate.migrate.inc
