@@ -8,7 +8,10 @@ function smb_migrate_migrate_api() {
     'api' => 2,
     'groups' => array(
       'content_migration' => array(
-        'title' => t('SMB Drupal 6 to Drupal 7 migration example.'),
+        'title' => t('SMB Drupal 6 to Drupal 7 content migration example.'),
+      ),
+      'taxonomy' => array(
+        'title' => t('SMB Drupal 6 to Drupal 7 taxonomy migration example.')
       ),
     ),
   );
@@ -28,6 +31,48 @@ function smb_migrate_migrate_api() {
     'description' => t('Migration of users from Drupal 6'),
     'class_name' => 'DrupalUser6Migration',
   );
+
+  /**
+   * For vocabulary migrations, source_vocabulary and destination_vocabulary are
+   * required arguments. Note that in Drupal 6 vocabularies did not have machine
+   * names, so we use the vocabulary ID to uniquely identify them.
+   */
+  $vocabulary_arguments = array(
+    'Tags' => array(
+      'description' => t('Migration of Topics terms from Drupal 6'),
+      'source_vocabulary' => '1',  // D6 Vocabulary ID
+      'destination_vocabulary' => 'tags',
+      'group_name' => 'taxonomy',
+    ),
+    'Tags2' => array(
+      'description' => t('Migration of Topics terms from Drupal 6'),
+      'source_vocabulary' => '2',  // D6 Vocabulary ID
+      'destination_vocabulary' => 'tags2',
+      'group_name' => 'taxonomy',
+    ),
+    'Tags3' => array(
+      'description' => t('Migration of Topics terms from Drupal 6'),
+      'source_vocabulary' => '3',  // D6 Vocabulary ID
+      'destination_vocabulary' => 'tags3',
+      'group_name' => 'taxonomy',
+    ),
+  );
+
+  /**
+   * Again, we're using the migrate_d2d class directly.
+   * The soft dependency says that while we don't have to run the user migration
+   * first, we want to make sure it's listed first so the vocabularies are
+   * listed right ahead of the node migrations.
+   */
+  $common_vocabulary_arguments = $common_arguments + array(
+    'class_name' => 'DrupalTerm6Migration',
+    'soft_dependencies' => array('User'),
+  );
+
+  foreach ($vocabulary_arguments as $migration_name => $arguments) {
+    $arguments += $common_vocabulary_arguments;
+    $api['migrations'][$migration_name] = $arguments;
+  }
 
   return $api;
 }
