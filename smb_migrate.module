@@ -5,4 +5,4 @@
  *
  */
 
-include_once('smb_migrate.inc');
+module_load_include('inc', 'smb_migrate');
