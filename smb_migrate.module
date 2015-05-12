@@ -4,5 +4,3 @@
  * @file smb_migrate.module
  *
  */
-
-include_once('smb_migrate.inc');

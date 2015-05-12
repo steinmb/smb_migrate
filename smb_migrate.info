@@ -5,4 +5,8 @@ core = 7.x
 dependencies[] = migrate
 dependencies[] = migrate_d2d
 
+files[] = article.inc
+files[] = file.inc
 files[] = node.inc
+files[] = page.inc
+files[] = smb_migrate.migrate.inc
