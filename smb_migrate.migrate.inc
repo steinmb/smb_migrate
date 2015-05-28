@@ -79,7 +79,7 @@ function smb_migrate_migrate_api() {
   $api['migrations']['File'] = $common_arguments + array(
     'machine_name' => 'filemigration',
     'description' => t('Import Drupal 6 files'),
-    'class_name' => 'DrupalFile6Migration',
+    'class_name' => 'SMBFile6Migration',
     'user_migration' => 'User',
     'default_uid' => 1,
     'source_dir' => DRUPAL_ROOT . '/../drupal-6.x-dev',
