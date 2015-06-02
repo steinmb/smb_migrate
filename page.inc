@@ -1,8 +1,8 @@
 <?php
 
 /**
- * @file article.inc
- * Article nodes migration from drupal 6 to 7.
+ * @file page.inc
+ * Page nodes migration from drupal 6 to 7.
  */
 
 class PageMigration extends SMBNodeMigration {
