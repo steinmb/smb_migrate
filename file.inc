@@ -5,8 +5,8 @@ class SMBFile6Migration extends DrupalFile6Migration {
     parent::__construct($arguments);
 
     $this->addFieldMapping('preserve_files', NULL, FALSE)
-      ->defaultValue(FALSE);
+         ->defaultValue(FALSE);
     $this->addFieldMapping('file_replace', NULL, FALSE)
-      ->defaultValue(FILE_EXISTS_REPLACE);
+         ->defaultValue(FILE_EXISTS_REPLACE);
   }
 }

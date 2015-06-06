@@ -28,5 +28,10 @@ class ArticleMigration extends SMBNodeMigration {
          ->sourceMigration('Tags3');
     $this->addFieldMapping('field_tags3:source_type')
          ->defaultValue('tid');
+
+    $this->addFieldMapping('field_file', 'field_file')
+         ->sourceMigration('File');
+    $this->addFieldMapping('field_file:file_class')
+         ->defaultValue('MigrateFileFid');
   }
 }
