@@ -21,6 +21,12 @@ function smb_migrate_migrate_api() {
     'source_connection' => 'legacy',
     'source_version' => 6,
     'group_name' => 'content_migration',
+    'format_mappings' => array(
+      '0' => 'plain_text',
+      '1' => 'filtered_html',
+      '2' => 'full_html',
+      '3' => 'foo',
+    ),
   );
 
   /**
